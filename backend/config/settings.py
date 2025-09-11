@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "users.apps.UsersConfig",
     "issues.apps.IssuesConfig",
+    "core.apps.CoreConfig"
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,5 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     ),
 }
+
+AUTH_USER_MODEL = "core.User"
