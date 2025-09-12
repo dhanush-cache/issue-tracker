@@ -1,3 +1,5 @@
+import { Button } from "@radix-ui/themes";
+
 export default function IssuesPage() {
-  return <h1 className="text-2xl font-bold">Issues Page</h1>;
+  return <Button>New Issue</Button>;
 }
