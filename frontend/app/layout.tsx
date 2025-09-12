@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-gray-50">
         <Theme>
           <NavBar />
-          <main>{children}</main>
+          <main className="p-5">{children}</main>
         </Theme>
       </body>
     </html>
