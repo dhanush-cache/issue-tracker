@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Callout, TextField } from "@radix-ui/themes";
+import { Button, Callout, Spinner, TextField } from "@radix-ui/themes";
 import React, { useState } from "react";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
@@ -25,6 +25,7 @@ const NewIssuePage = () => {
     resolver: zodResolver(createIssueSchema),
   });
   const [error, setError] = useState("");
+  const [isSubmitting, setSubmitting] = useState(false);
   return (
     <div className="max-w-xl">
       {error && (
@@ -36,9 +37,11 @@ const NewIssuePage = () => {
         className="space-y-3"
         onSubmit={handleSubmit(async (data) => {
           try {
+            setSubmitting(true);
             await axios.post("http://127.0.0.1:8000/api/issues/", data);
             router.push("/issues");
           } catch {
+            setSubmitting(false);
             setError("An unexpected error occurred.");
           }
         })}
@@ -56,7 +59,10 @@ const NewIssuePage = () => {
           )}
         />
         <ErrorMessage>{errors.description?.message}</ErrorMessage>
-        <Button>Submit new issue</Button>
+        <Button disabled={isSubmitting}>
+          Submit new issue
+          <Spinner loading={isSubmitting} />
+        </Button>
       </form>
     </div>
   );
