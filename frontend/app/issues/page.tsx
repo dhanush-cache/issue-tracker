@@ -1,11 +1,16 @@
 import { Table } from "@radix-ui/themes";
 import axios from "axios";
-import { IssueStatus, IssueStatusBadge } from "@/app/components/IssueStatusBadge";
+import {
+  IssueStatus,
+  IssueStatusBadge,
+} from "@/app/components/IssueStatusBadge";
 import { IssueActions } from "@/app/issues/issueActions";
+import Link from "next/link";
 
 export interface Issue {
   id: number;
   title: string;
+  description: string;
   status: IssueStatus;
   created_at: string;
 }
@@ -35,7 +40,7 @@ export default async function IssuesPage() {
           {issues.map((issue) => (
             <Table.Row key={issue.id}>
               <Table.Cell>
-                {issue.title}
+                <Link href={`/issues/${issue.id}`}>{issue.title}</Link>
                 <div className="block md:hidden">
                   <IssueStatusBadge status={issue.status} />
                 </div>
