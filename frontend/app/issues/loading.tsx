@@ -1,21 +1,8 @@
-import { Table } from "@radix-ui/themes";
-import axios from "axios";
-import { IssueStatus, IssueStatusBadge } from "@/app/components/IssueStatusBadge";
+import React from "react";
 import { IssueActions } from "@/app/issues/issueActions";
+import { Skeleton, Table } from "@radix-ui/themes";
 
-export interface Issue {
-  id: number;
-  title: string;
-  status: IssueStatus;
-  created_at: string;
-}
-
-export default async function IssuesPage() {
-  const response = await axios.get<Issue[]>(
-    "http://127.0.0.1:8000/api/issues/",
-  );
-  const issues = response.data;
-
+const LoadingIssuesPage = () => {
   return (
     <div>
       <IssueActions />
@@ -32,19 +19,19 @@ export default async function IssuesPage() {
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {issues.map((issue) => (
-            <Table.Row key={issue.id}>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <Table.Row key={i}>
               <Table.Cell>
-                {issue.title}
+                <Skeleton />
                 <div className="block md:hidden">
-                  <IssueStatusBadge status={issue.status} />
+                  <Skeleton />
                 </div>
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                <IssueStatusBadge status={issue.status} />
+                <Skeleton />
               </Table.Cell>
               <Table.Cell className="hidden md:table-cell">
-                {new Date(issue.created_at).toDateString()}
+                <Skeleton />
               </Table.Cell>
             </Table.Row>
           ))}
@@ -52,4 +39,6 @@ export default async function IssuesPage() {
       </Table.Root>
     </div>
   );
-}
+};
+
+export default LoadingIssuesPage;
