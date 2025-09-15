@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import { Issue } from "@/app/issues/page";
 import { notFound } from "next/navigation";
+import { Card, Flex, Heading, Text } from "@radix-ui/themes";
+import { IssueStatusBadge } from "@/app/components/IssueStatusBadge";
 
 interface Props {
   params: { id: string };
@@ -15,10 +17,14 @@ const IssueDetail = async ({ params }: Props) => {
     const issue = response.data;
     return (
       <div>
-        <p>{issue.title}</p>
-        <p>{issue.description}</p>
-        <p>{issue.status}</p>
-        <p>{new Date(issue.created_at).toDateString()}</p>
+        <Heading>{issue.title}</Heading>
+        <Flex gap="3" my="2">
+          <IssueStatusBadge status={issue.status} />
+          <Text>{new Date(issue.created_at).toDateString()}</Text>
+        </Flex>
+        <Card>
+          <p>{issue.description}</p>
+        </Card>
       </div>
     );
   } catch (error) {
