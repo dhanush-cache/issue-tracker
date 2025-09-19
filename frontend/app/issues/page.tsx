@@ -1,8 +1,7 @@
 import { Table } from "@radix-ui/themes";
 import axios from "axios";
-import { IssueStatus, IssueStatusBadge } from "@/app/components";
+import { IssueStatus, IssueStatusBadge, Link } from "@/app/components";
 import { IssueActions } from "@/app/issues/issueActions";
-import { Link } from "../components/Link";
 
 export interface Issue {
   id: number;
