@@ -5,7 +5,7 @@ import {
   IssueStatusBadge,
 } from "@/app/components/IssueStatusBadge";
 import { IssueActions } from "@/app/issues/issueActions";
-import Link from "next/link";
+import { Link } from "../components/Link";
 
 export interface Issue {
   id: number;
