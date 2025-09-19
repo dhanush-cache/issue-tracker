@@ -1,5 +1,5 @@
 import React from "react";
-import {Skeleton} from "@radix-ui/themes";
+import { Skeleton } from "@radix-ui/themes";
 
 const LoadingNewIssuePage = () => {
   return (

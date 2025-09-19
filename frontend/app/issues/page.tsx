@@ -1,9 +1,6 @@
 import { Table } from "@radix-ui/themes";
 import axios from "axios";
-import {
-  IssueStatus,
-  IssueStatusBadge,
-} from "@/app/components/IssueStatusBadge";
+import { IssueStatus, IssueStatusBadge } from "@/app/components";
 import { IssueActions } from "@/app/issues/issueActions";
 import { Link } from "../components/Link";
 
