@@ -45,6 +45,7 @@ const IssueForm = ({ issue }: Props) => {
         );
       else await axios.post("http://127.0.0.1:8000/api/issues/", data);
       router.push("/issues");
+      router.refresh();
     } catch {
       setSubmitting(false);
       setError("An unexpected error occurred.");
