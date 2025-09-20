@@ -12,7 +12,7 @@ export function IssueDetails(props: { issue: Issue }) {
         <IssueStatusBadge status={props.issue.status} />
         <Text>{new Date(props.issue.created_at).toDateString()}</Text>
       </Flex>
-      <Card className="prose" mt="4">
+      <Card className="prose max-w-full" mt="4">
         <ReactMarkdown>{props.issue.description}</ReactMarkdown>
       </Card>
     </>

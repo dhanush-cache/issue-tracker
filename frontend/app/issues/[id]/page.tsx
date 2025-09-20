@@ -2,9 +2,10 @@ import React from "react";
 import axios from "axios";
 import { Issue } from "@/app/issues/page";
 import { notFound } from "next/navigation";
-import { Box, Grid } from "@radix-ui/themes";
+import { Box, Flex, Grid } from "@radix-ui/themes";
 import { EditIssueButton } from "@/app/issues/[id]/EditIssueButton";
 import { IssueDetails } from "@/app/issues/[id]/issueDetails";
+import { DeleteIssueButton } from "@/app/issues/[id]/DeleteIssueButton";
 
 interface Props {
   params: { id: string };
@@ -17,12 +18,15 @@ const IssueDetail = async ({ params }: Props) => {
     );
     const issue = response.data;
     return (
-      <Grid columns={{ initial: "1", md: "2" }} gap="5">
-        <Box>
+      <Grid columns={{ initial: "1", sm: "5" }} gap="5">
+        <Box className="md:col-span-4">
           <IssueDetails issue={issue} />
         </Box>
         <Box>
-          <EditIssueButton issue={issue} />
+          <Flex direction="column" gap="4">
+            <EditIssueButton issue={issue} />
+            <DeleteIssueButton issue={issue} />
+          </Flex>
         </Box>
       </Grid>
     );

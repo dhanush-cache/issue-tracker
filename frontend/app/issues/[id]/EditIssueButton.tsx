@@ -6,11 +6,11 @@ import React from "react";
 
 export function EditIssueButton(props: { issue: Issue }) {
   return (
-    <Link href={`/issues/${props.issue.id}/edit`}>
-      <Button>
+    <Button asChild>
+      <Link href={`/issues/${props.issue.id}/edit`}>
         <Pencil2Icon />
         Edit Issue
-      </Button>
-    </Link>
+      </Link>
+    </Button>
   );
 }
